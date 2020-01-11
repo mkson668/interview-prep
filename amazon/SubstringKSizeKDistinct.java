@@ -36,7 +36,7 @@ class SubstringKSizeKDistinct {
 
     public static List<String> permutationsKK(String s, int k) {
         List<String> allStrings = new ArrayList<>();
-        subStringKKGenerate(s, k, allStrings, "");
+        permutationsKKGenerate(s, k, allStrings, "");
         System.out.println(allStrings);
         return allStrings;
     }
@@ -55,7 +55,7 @@ class SubstringKSizeKDistinct {
             String tempStr = Character.toString(temp);
             if (!currStr.contains(tempStr)) {
                 String updateCurrStr = currStr + tempStr;
-                subStringKKGenerate(str, k, store, updateCurrStr);
+                permutationsKKGenerate(str, k, store, updateCurrStr);
             } 
         }
     }

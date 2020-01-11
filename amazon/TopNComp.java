@@ -1,5 +1,4 @@
 import java.util.*;
-import java.lang.*; 
 import java.util.Map.Entry;
 
 class TopNComp implements Comparable<Entry>{

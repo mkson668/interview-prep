@@ -1,7 +1,7 @@
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Map.Entry;
+
 
 public class ZombieMatrix {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class ZombieMatrix {
             {0,0,0},
             {0,0,0},
         };
-        int ret = findTotalInfectionTime(inputMat);
+        // int ret = findTotalInfectionTime(inputMat);
         int ret2 = findTimeForInfection(inputMat);
         System.out.println("it will take " + ret2 + " iterations");
     }
