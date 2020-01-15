@@ -1,6 +1,6 @@
 class SpiralMatrix2 {
     public static void main(String[] args) {
-        int[][] ret = generateMatrix(4);
+        int[][] ret = generateMatrix(3);
         System.out.println(ret);
     }
 
@@ -30,7 +30,7 @@ class SpiralMatrix2 {
             }
             bottom--;
             for (int i = bottom; i >= top; i--) {
-                matrix[i][right] = currVal++;
+                matrix[i][left] = currVal++;
             }
             left++;
         }

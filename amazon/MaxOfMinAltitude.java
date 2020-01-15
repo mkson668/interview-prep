@@ -2,8 +2,9 @@ import java.util.*;
 
 public class MaxOfMinAltitude {
     public static void main(String[] args) {
-        int[][] mat = {{1, 2, 3},{4, 5, 1}};
-        findMaxOfMin(mat);
+        // int[][] mat = {{1, 2, 3},{4, 5, 1}};
+        int[][] mat2 = { { 20, 20, 3 }, { 20, 3, 20 }, { 3, 20, 20 } };
+        findMaxOfMin(mat2);
     }
 
     public static void findMaxOfMin(int[][] mat){
