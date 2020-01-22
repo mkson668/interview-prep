@@ -8,8 +8,8 @@ class Search2DMatrix {
         { 18, 21, 23, 26, 30 } }; */
         int[][] mat = {
             { -1, 3 },
-        };
-        boolean found = searchMatrix(mat, 26);
+        }; 
+        boolean found = searchMatrix(mat, 3);
         System.out.println(found);
     }
 
@@ -24,7 +24,7 @@ class Search2DMatrix {
             System.out.println(matrix[i][j]);
             if (matrix[i][j] == target) {
                 ret = true;
-                break;
+                
             }
             // the first time this is true the target value will be either on top or to the
             // left of this location
@@ -36,24 +36,29 @@ class Search2DMatrix {
                 for (int k = 0; k <= row; k++) {
                     if (matrix[k][column] == target) {
                         ret = true;
-                        break;
+
                     }
                 }
                 for (int l = 0; l <= column; l++) {
                     if (matrix[row][l] == target) {
                         ret = true;
-                        break;
+
                     }
                 }
-                break;
+
             }
-            if (i == matrix.length - 1 && j < matrix[0].length - 1) {
-                j++;
-            } else if (i < matrix.length - 1 && j == matrix[0].length - 1) {
-                i++;
+            if (ret == false) {
+                if (i == matrix.length - 1 && j < matrix[0].length - 1) {
+                    j++;
+                } else if (i < matrix.length - 1 && j == matrix[0].length - 1) {
+                    i++;
+                } else {
+                    i++;
+                    j++;
+                }
             } else {
-                i++;
-                j++;
+                // already found no more searching needed
+                break;
             }
         }
         return ret;
