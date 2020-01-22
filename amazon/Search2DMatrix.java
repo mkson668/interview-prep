@@ -78,13 +78,11 @@ class Search2DMatrix {
                 found = true;
                 break;
             }
-            if (target > matrix[i][j]) {
-                i++;
-                continue;
+            else if (target > matrix[i][j]) {
+                i++;            
             } 
-            if (target < matrix[i][j]) {
+            else if (target < matrix[i][j]) {
                 j--;
-                continue;
             } 
         }
         return found;
