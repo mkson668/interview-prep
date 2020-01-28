@@ -15,7 +15,7 @@ class SubtreeOfAnotherTree {
         original.right = new TreeNode(5);
         original.left.left = new TreeNode(1);
         original.left.right = new TreeNode(2);
-        original.left.right.right = new TreeNode(3);
+        original.left.right.left = new TreeNode(0);
 
         TreeNode subTree = new TreeNode(4);
         subTree.left = new TreeNode(1);
@@ -23,6 +23,9 @@ class SubtreeOfAnotherTree {
 
         boolean ret = isSubtree(subTree, original);
         System.out.println(ret);
+
+        boolean ret1 = preorderTraverseSearch(subTree, original);
+        System.out.println(ret1);
     }
 
     public static boolean isSubtree(TreeNode s, TreeNode t) {
@@ -80,5 +83,23 @@ class SubtreeOfAnotherTree {
 
         }
         return isMatching;
+    }
+
+    public static Boolean preorderTraverseSearch(TreeNode sub, TreeNode tree) {
+        String subStr = formTreeString(sub, true);
+        String treeStr = formTreeString(tree, true);
+        Boolean ret = (treeStr.contains(subStr)) ? true: false;
+        return ret;
+    }
+
+    public static String formTreeString(TreeNode t, Boolean left) {
+        if (t == null) {
+            if (left) {
+                return "left null";
+            } else {
+                return "right null";
+            }
+        }
+        return t.val + " " + formTreeString(t.left, true) + " " + formTreeString(t.right, false) + " ";
     }
 }
