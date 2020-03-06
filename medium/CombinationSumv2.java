@@ -2,8 +2,8 @@ import java.util.*;
 
 class CombinationSumv2 {
     public static void main(String[] args) {
-        int[] inA = new int[]{1,2,3};
-        List<List<Integer>> out = combinationSum(inA, 3);
+        int[] inA = new int[]{1,2};
+        List<List<Integer>> out = combinationSum(inA, 4);
         System.out.println(out);
     }
 
@@ -21,13 +21,13 @@ class CombinationSumv2 {
         for (int i = 0; i < candidate.length; i++) {
             List<Integer> updatedList = new ArrayList<>(currList);
             int updatedSum = currsSum;
-            if (updatedSum == target) {
+            if (updatedSum > target) {
+                return;
+            } else if (updatedSum == target) {
                 Collections.sort(updatedList);
                 if (!allList.contains(updatedList)) {
                     allList.add(updatedList);
                 }
-                return;
-            } else if (updatedSum > target) {
                 return;
             } else {
                 updatedList.add(candidate[i]);
@@ -42,22 +42,25 @@ class CombinationSumv2 {
         for (int i = 0; i < candidate.length; i++) {
             //List<Integer> updatedList = new ArrayList<>(currList);
             int updatedSum = currsSum;
-            if (updatedSum == target) {
+            if (updatedSum > target) {
+                return;
+            } else if (updatedSum == target) {
                 // also dont sort the orignial list because it will cause the wrong end element to be deleted
                 // we should sort Array before calling this helper function 
                 // its important to create a new list because it calls by reference, 
                 boolean contains = false;
+                // ok so Collections.containsAll() doenst work when [1,1,2] [2,2] it says array 1 contains 2 
+                List<Integer> tempList = new ArrayList<>(currList);
+                Collections.sort(tempList);
                 for (List<Integer> lst: allList) {
-                    if (lst.containsAll(currList)) {
+                    if (lst.equals(tempList)) {
                         contains = true;
                         break;
                     }
                 }
                 if (!contains) {
-                    allList.add(new ArrayList<>(currList));
+                    allList.add(tempList);
                 }
-                return;
-            } else if (updatedSum > target) {
                 return;
             } else {
                 currList.add(candidate[i]);
