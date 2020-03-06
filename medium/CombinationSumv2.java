@@ -43,9 +43,18 @@ class CombinationSumv2 {
             //List<Integer> updatedList = new ArrayList<>(currList);
             int updatedSum = currsSum;
             if (updatedSum == target) {
-                Collections.sort(currList);
-                if (!allList.contains(currList)) {
-                    allList.add(currList);
+                // also dont sort the orignial list because it will cause the wrong end element to be deleted
+                // we should sort Array before calling this helper function 
+                // its important to create a new list because it calls by reference, 
+                boolean contains = false;
+                for (List<Integer> lst: allList) {
+                    if (lst.containsAll(currList)) {
+                        contains = true;
+                        break;
+                    }
+                }
+                if (!contains) {
+                    allList.add(new ArrayList<>(currList));
                 }
                 return;
             } else if (updatedSum > target) {
@@ -53,7 +62,7 @@ class CombinationSumv2 {
             } else {
                 currList.add(candidate[i]);
                 updatedSum += candidate[i];
-                combinationSumHelp(candidate, currList, allList, target, updatedSum);
+                combinationSumHelpV2(candidate, currList, allList, target, updatedSum);
                 currList.remove(currList.size() - 1);
             }
         }
