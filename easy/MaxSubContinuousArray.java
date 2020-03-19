@@ -37,3 +37,4 @@ class MaxSubContinuousArray {
         return max;
     }
 }
+
