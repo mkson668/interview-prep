@@ -30,6 +30,32 @@ class MergeTwoLists {
         return headOrg.next;
     }
 
+    public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode newHead = new ListNode(head.val);
+        ListNode currI = newHead;
+        ListNode currJ = head;
+        int currVal = head.val;
+        int iter = 0;
+        while (currJ != null) {
+            if (iter == 0) {
+                currVal = currI.val;
+                currJ = currJ.next;
+                iter++;
+                continue;
+            }
+            if (currJ.val != currVal) {
+                currI.next = new ListNode(currJ.val); //i++
+                currI = currI.next;
+                currVal = currJ.val;
+            }
+            currJ = currJ.next;
+        }
+        return newHead; 
+    }
+
     public static void main(String[] args) {
         ListNode a = new MergeTwoLists.ListNode(1);
         ListNode b = new MergeTwoLists.ListNode(1);
@@ -37,6 +63,13 @@ class MergeTwoLists {
         a.next.next = new MergeTwoLists.ListNode(4);
         b.next = new MergeTwoLists.ListNode(3);
         b.next.next = new MergeTwoLists.ListNode(4);
+        ListNode c = new MergeTwoLists.ListNode(0);
+        c.next = new MergeTwoLists.ListNode(0);
+        c.next.next = new MergeTwoLists.ListNode(1);
+        c.next.next.next = new MergeTwoLists.ListNode(1);
+        c.next.next.next.next = new MergeTwoLists.ListNode(2);
+        c.next.next.next.next.next = new MergeTwoLists.ListNode(2);
+        ListNode ret = deleteDuplicates(c);
         mergeTwoLists(a, b);
     }
 }
